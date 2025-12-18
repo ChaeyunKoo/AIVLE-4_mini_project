@@ -5,6 +5,7 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
+      - cd miniproject4-next
       - npm ci
   build:
     commands:
