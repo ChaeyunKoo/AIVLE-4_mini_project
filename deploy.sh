@@ -1,10 +1,11 @@
 #!/bin/bash
 set -e
 
+export PATH=$PATH:/usr/local/bin:/usr/bin
+
 echo "=== Deploy started ==="
-
-APP_DIR=/home/ubuntu/app/miniproject4-next
-
+# package.json이 있는 폴더 경로
+APP_DIR=/home/ubuntu/app/miniproject4-next  
 cd $APP_DIR
 
 echo "Node version:"
