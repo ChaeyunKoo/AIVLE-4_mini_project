@@ -17,4 +17,4 @@ artifacts:
   files:
     - 'miniproject4-next/**/*'  # 폴더 구조를 유지하며 모든 파일 포함
     - 'appspec.yml'
-    - 'deploy.sh'
+    - 'scripts/**/*'
