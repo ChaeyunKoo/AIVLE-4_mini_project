@@ -2,11 +2,13 @@ version: 0.0
 os: linux
 
 files:
-  - source: /
-    destination: /home/ubuntu/app
+  - source: /miniproject4-next  # 빌드된 프로젝트 폴더만
+    destination: /home/ubuntu/app/miniproject4-next
+  - source: /deploy.sh          # 실행 스크립트
+    destination: /home/ubuntu/app/miniproject4-next
 
 hooks:
   AfterInstall:
-    - location: deploy.sh
+    - location: miniproject4-next/deploy.sh # 복사된 경로에 맞춰 수정
       timeout: 300
       runas: ubuntu
