@@ -73,12 +73,12 @@ export default function BookEditPage() {
         const fetchBook = async () => {
             if (!isEditMode) return;
             try {
-                const book_res = await axios.post(`http://localhost:8080/api/v1/books/check`, {
+                const book_res = await axios.post(`${API_BASE_URL}/api/v1/books/check`, {
                     book_id : bookId,
                     user_id: user,
                 });
 
-                const img_res = await axios.post(`http://localhost:8080/api/v1/image/check`, {
+                const img_res = await axios.post(`${API_BASE_URL}/api/v1/image/check`, {
                     book_id : bookId,
                 });
 
@@ -152,7 +152,7 @@ export default function BookEditPage() {
 
     // 🔹 API 요청 함수 (1209 추가)
     const generateCoverApi = async ({ apiKey, title, content, model }) => {
-        const response = await fetch("/api/cover-generator", {
+        const response = await fetch(`${API_BASE_URL}/api/cover-generator`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ apiKey, title, content, model }),
