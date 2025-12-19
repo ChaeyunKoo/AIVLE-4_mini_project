@@ -15,6 +15,11 @@ phases:
 
 artifacts:
   files:
-    - 'miniproject4-next/**/*'  # 폴더 구조를 유지하며 모든 파일 포함
+    - 'miniproject4-next/.next/**/*'
+    - 'miniproject4-next/node_modules/**/*'
+    - 'miniproject4-next/package.json'
     - 'appspec.yml'
+    - 'miniproject4-next/next.config.mjs' # 설정 파일 추가
+    - 'miniproject4-next/public/**/*'      # 이미지 등 정적 파일 추가
     - 'scripts/**/*'
+  discard-paths: no # 폴더 구조 유지
