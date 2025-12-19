@@ -9,6 +9,9 @@ echo "=== Deploy started ==="
 APP_DIR=/home/ubuntu/app/miniproject4-next  
 cd $APP_DIR
 
+# [추가] 실행 전 소유권 보장
+sudo chown -R ubuntu:ubuntu .
+
 echo "Node version:"
 node -v || { echo "Node not found"; exit 1; }
 npm -v
