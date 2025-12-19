@@ -14,6 +14,9 @@ import {
 
 import Header from "./components/Header";
 
+const API_BASE_URL =
+    process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 export default function HomePage() {
     const router = useRouter();
 
@@ -38,7 +41,7 @@ export default function HomePage() {
         const fetchBooks = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:8080/api/v1/books/list`
+                    `${API_BASE_URL}/api/v1/books/list`
                 );
 
                 const list = response.data.data;
