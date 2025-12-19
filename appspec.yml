@@ -4,11 +4,15 @@ os: linux
 files:
   - source: /miniproject4-next  # 빌드된 프로젝트 폴더만
     destination: /home/ubuntu/app/miniproject4-next
-  - source: /deploy.sh          # 실행 스크립트
-    destination: /home/ubuntu/app/miniproject4-next
+  - source: /scripts        # 실행 스크립트
+    destination: /home/ubuntu/app/scripts
 
 hooks:
+  ApplicationStop:
+    - location: scripts/application_stop.sh
+      timeout: 300
+      runas: ubuntu
   AfterInstall:
-    - location: miniproject4-next/deploy.sh # 복사된 경로에 맞춰 수정
+    - location: scripts/deploy.sh
       timeout: 300
       runas: ubuntu
