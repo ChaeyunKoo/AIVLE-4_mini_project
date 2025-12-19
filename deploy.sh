@@ -1,15 +1,16 @@
 #!/bin/bash
 set -e
 
-export PATH=$PATH:/usr/local/bin:/usr/bin
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # nvm 로드
+export PATH=$PATH:/home/ubuntu/.nvm/versions/node/$(nvm current)/bin
 
 echo "=== Deploy started ==="
-# package.json이 있는 폴더 경로
 APP_DIR=/home/ubuntu/app/miniproject4-next  
 cd $APP_DIR
 
 echo "Node version:"
-node -v
+node -v || { echo "Node not found"; exit 1; }
 npm -v
 
 echo "Installing dependencies..."
