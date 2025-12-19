@@ -10,8 +10,11 @@ phases:
   build:
     commands:
       - npm run build
+      # 빌드 후 상위 디렉토리로 돌아와야 artifacts가 정상적으로 경로를 잡습니다.
+      - cd ..
 
 artifacts:
   files:
-    - '**/*'
-  discard-paths: no
+    - 'miniproject4-next/**/*'  # 폴더 구조를 유지하며 모든 파일 포함
+    - 'appspec.yml'
+    - 'deploy.sh'
