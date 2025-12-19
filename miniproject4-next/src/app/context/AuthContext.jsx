@@ -3,6 +3,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
+const API_BASE_URL =
+    process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
@@ -23,7 +26,7 @@ export function AuthProvider({ children }) {
     // ✅ axios 로그인 함수
     // ----------------------------------------------------------------------------------------
     const login = async (id, pw) => {
-        const url = `http://localhost:8080/api/v1/users/login`;
+        const url = `${API_BASE_URL}/api/v1/users/login`;
         console.log("📌 로그인 요청 URL:", url);
 
         try {
