@@ -21,8 +21,10 @@ import axios from "axios";
 import {useAuth} from "@/app/context/AuthContext";
 import {ReflectAdapter as searchParams} from "next/dist/server/web/spec-extension/adapters/reflect";
 
-const API_BASE_URL =
-    process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+// const API_BASE_URL =
+//     process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
+const API_BASE_URL = "http://10.99.2.11:8080"
 
 export default function BookDetailPage() {
     const params = useParams();

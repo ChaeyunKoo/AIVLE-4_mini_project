@@ -3,8 +3,10 @@ import { NextResponse } from "next/server";
 import axios from "axios";
 
 // 스프링 백엔드 주소
-const API_BASE_URL =
-    process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+// const API_BASE_URL =
+//     process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
+const API_BASE_URL = "http://10.99.2.11:8080"
 
 export async function POST(request) {
     try {
