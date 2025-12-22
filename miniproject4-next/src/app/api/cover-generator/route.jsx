@@ -2,6 +2,9 @@
 // app/api/cover-generator/route.jsx
 
 import { NextResponse } from 'next/server';
+// 스프링 백엔드 주소
+const API_BASE_URL =
+    process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
 
 // OpenAI SDK가 없다고 가정하고, Node.js의 fetch를 사용한 기본적인 로직만 구현합니다.
 
@@ -60,7 +63,7 @@ export async function POST(request) {
 
         // 1️⃣ 생성된 이미지 URL을 DB 저장용 백엔드 API로 전송하는 코드 추가
         try {
-            const saveResponse = await fetch(`${process.env.BACKEND_URL}/api/v1/image`, {
+            const saveResponse = await fetch(`${API_BASE_URL}/api/v1/image`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
