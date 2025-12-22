@@ -17,7 +17,7 @@ import Header from "./components/Header";
 // const API_BASE_URL =
 //     process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
 
-const API_BASE_URL = "http://10.99.2.11:8080"
+const API_BASE_URL = "/api"
 
 export default function HomePage() {
     const router = useRouter();
