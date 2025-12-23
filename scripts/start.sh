@@ -1,31 +1,27 @@
 #!/usr/bin/env bash
+set -e
+
 APP_DIR="/home/ubuntu/app/miniproject4-next"
-PID_FILE="$APP_DIR/app.pid"
-LOG_FILE="$APP_DIR/app.log"
+APP_NAME="next-app"
+LOG_FILE="/home/ubuntu/app/deploy.log"
 
 cd "$APP_DIR"
 
-echo "===== START $(date) =====" >> "$LOG_FILE"
+echo "===== DEPLOY START $(date) =====" >> "$LOG_FILE"
 
-# 이미 실행 중이면 중복 실행 방지
-if [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
-  echo "App already running (PID: $(cat "$PID_FILE"))" >> "$LOG_FILE"
-  exit 0
-fi
-
-# node_modules 없으면 설치
+# 의존성 설치 (필요 시)
 if [ ! -d "node_modules" ]; then
-  echo "node_modules not found. Running npm ci..." >> "$LOG_FILE"
+  echo "node_modules not found. Installing..." >> "$LOG_FILE"
   npm ci --omit=dev >> "$LOG_FILE" 2>&1
 fi
 
-# 기존 pid 파일 제거 (좀비 방지)
-rm -f "$PID_FILE"
+# 기존 pm2 프로세스 종료 (없어도 무시)
+pm2 delete "$APP_NAME" || true
 
-# 앱 실행
-nohup npm run start >> "$LOG_FILE" 2>&1 &
+# pm2로 실행
+pm2 start npm --name "$APP_NAME" -- start >> "$LOG_FILE" 2>&1
 
-# PID 저장
-echo $! > "$PID_FILE"
+# pm2 상태 저장 (재부팅 대비)
+pm2 save >> "$LOG_FILE" 2>&1
 
-echo "App started (PID: $(cat "$PID_FILE"))" >> "$LOG_FILE"
+echo "===== DEPLOY END $(date) =====" >> "$LOG_FILE"
