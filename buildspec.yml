@@ -8,21 +8,21 @@ phases:
   install:
     runtime-versions:
       nodejs: 20
-
   build:
     commands:
       - cd $APP_DIR
       - npm ci
       - npm run build
-      - cd ..
+      - echo "Build completed in $APP_DIR"
+      # 여기서 cd .. 을 하지 않고 그대로 종료합니다.
 
 artifacts:
+  base-directory: 'miniproject4-next'
   files:
-    - 'miniproject4-next/.next/**/*'
-    - 'miniproject4-next/node_modules/**/*'
-    - 'miniproject4-next/public/**/*'
-    - 'miniproject4-next/package.json'
-    - 'miniproject4-next/package-lock.json'
-    - 'miniproject4-next/next.config.mjs'
-    - 'appspec.yml'
-    - 'scripts/**/*'
+    - '.next/**/*'
+    - 'public/**/*'
+    - 'package.json'
+    - 'package-lock.json'
+    - 'next.config.mjs'
+    - '../appspec.yml'
+    - '../scripts/**/*'
