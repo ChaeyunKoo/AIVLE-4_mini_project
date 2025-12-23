@@ -19,6 +19,7 @@ phases:
 artifacts:
   files:
     - 'miniproject4-next/.next/**/*'
+    - 'miniproject4-next/node_modules/**/*'
     - 'miniproject4-next/public/**/*'
     - 'miniproject4-next/package.json'
     - 'miniproject4-next/package-lock.json'
