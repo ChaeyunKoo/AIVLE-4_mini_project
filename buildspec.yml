@@ -1,9 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    APP_DIR: "miniproject4-next"
-
 phases:
   install:
     runtime-versions:
@@ -11,15 +7,11 @@ phases:
 
   build:
     commands:
-      - cd $APP_DIR
+      - cd miniproject4-next
       - npm ci
       - npm run build
-      - cd ..
 
 artifacts:
+  base-directory: miniproject4-next
   files:
-    - appspec.yml
-    - scripts/**/*
-    - miniproject4-next/.next/**/*
-    - miniproject4-next/package.json
-    - miniproject4-next/package-lock.json
+    - '**/*'
