@@ -3,7 +3,7 @@ os: linux
 
 files:
   # 🔥 deploy/ 기준 전체를 그대로 복사 (구조 보존)
-  - source: /miniproject4-next
+  - source: /
     destination: /home/ubuntu/app/miniproject4-next
     overwrite: true
   # scripts나 appspec 등 루트에 있는 파일 처리 (필요시)
