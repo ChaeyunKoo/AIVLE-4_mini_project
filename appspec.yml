@@ -6,10 +6,6 @@ files:
   - source: /
     destination: /home/ubuntu/app/miniproject4-next
     overwrite: true
-  # scripts나 appspec 등 루트에 있는 파일 처리 (필요시)
-  - source: /scripts
-    destination: /home/ubuntu/app/scripts
-    overwrite: true
 
 permissions:
   # 🔥 부모 디렉토리까지 포함 (권한 문제 종결)
